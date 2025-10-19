@@ -6,8 +6,8 @@
 #include "hardware/gpio.h"
 #include "hardware/timer.h"
 
-inline constexpr uint32_t BUTTON_PRESS_THRESH = 100 * 1000;
-inline constexpr uint32_t BUTTON_LONG_PRESS_THRESH = 500 * 1000;
+inline constexpr uint32_t BUTTON_PRESS_THRESH = 200 * 1000;
+inline constexpr uint32_t BUTTON_LONG_PRESS_THRESH = 1000 * 1000;
 
 void handle_button(button* butt)
 {
@@ -62,10 +62,10 @@ void handle_button(button* butt)
         }
         break;
     case press_type::BTN_LONG_TOUT:
-            if (!pressed)
-            {
-                butt->state = press_type::BTN_IDLE;
-            }
+        if (!pressed)
+        {
+            butt->state = press_type::BTN_IDLE;
+        }
         break;
     }
 }

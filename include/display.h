@@ -56,5 +56,6 @@ void tm1650_reset(i2c_inst * i2c);
 void tm1650_write_sym(i2c_inst * i2c, TM1650_POS pos, TM1650_SYMBOL sym, bool dot = false);
 TM1650_SYMBOL tm1650_number_to_symbol(uint8_t num);
 void tm1650_write_float(i2c_inst * i2c, float num, uint8_t precision);
+void tm1650_write_int(i2c_inst * i2c, uint16_t num);
 
 #endif //PIED_PIPER_DISPLAY_H

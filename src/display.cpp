@@ -84,3 +84,22 @@ void tm1650_write_float(i2c_inst * i2c, float num, uint8_t precision)
         tm1650_write_sym(i2c, static_cast<TM1650_POS>(i), tm1650_number_to_symbol(val_to_write), dot);
     }
 }
+
+void tm1650_write_int(i2c_inst * i2c, uint16_t num)
+{
+    tm1650_reset(i2c);
+    if (num > 9999)
+    {
+        num = 9999;
+    }
+    for (int8_t i = 3; i >= 0; i--)
+    {
+        uint8_t val_to_write = num % 10;
+        num = num / 10;
+        tm1650_write_sym(i2c, static_cast<TM1650_POS>(i), tm1650_number_to_symbol(val_to_write));
+        if (num == 0)
+        {
+            break;
+        }
+    }
+}
